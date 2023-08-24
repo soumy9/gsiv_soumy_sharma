@@ -1,13 +1,15 @@
-function Card({ imageSrc, title, rating, description }) {
+import { Link } from "react-router-dom";
+
+function Card({ imageSrc, title, rating, description, id }) {
   return (
-    <div>
+    <Link to={`/details/${id}`}>
       <picture>
-        <source srcset={imageSrc} />
+        <source srcSet={imageSrc} />
       </picture>
       <h3>{title}</h3>
       <span>{rating}</span>
       <p>{description}</p>
-    </div>
+    </Link>
   );
 }
 

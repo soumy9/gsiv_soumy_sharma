@@ -1,6 +1,31 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const getMoviesList = createAsyncThunk('movies/list', async () => {
-  const moviesList = await (await fetch('http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07')).json();
-  return Promise.resolve({moviesList});
-});
+const api = 'https://api.themoviedb.org/3';
+const apiKey = '8d00b483587b8d5ce4a288e827802e49';
+
+// https://api.themoviedb.org/3/discover/movie?api_key=8d00b483587b8d5ce4a288e827802e49&page=2
+//https://api.themoviedb.org/3/movie/550?api_key=8d00b483587b8d5ce4a288e827802e49
+
+export const getMoviesList = createAsyncThunk(
+  'movies/list',
+  async (_, thunkAPI) => {
+    const { page } = thunkAPI.getState();
+    const moviesList = await (
+      await fetch(`${api}/discover/movie?api_key=${apiKey}&page=${page}`)
+    ).json();
+    return Promise.resolve({ moviesList });
+  }
+);
+
+export const getMovieDetails = createAsyncThunk(
+  'movie/details',
+  async ({ id }) => {
+    if (!id) {
+      id = 550;
+    }
+    const movieDetails = await (
+      await fetch(`${api}/movie/${id}?api_key=${apiKey}`)
+    ).json();
+    return Promise.resolve({ movieDetails });
+  }
+);
