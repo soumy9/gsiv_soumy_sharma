@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMoviesList } from '../../thunks/moviesThunk';
 import Card from '../Card/Card';
+import './CardList.css';
 
 function CardList() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function CardList() {
     dispatch(getMoviesList());
   }, [dispatch]);
   return (
-    <div>
+    <div className='card-list__container'>
       {moviesList?.results?.map((movie) => {
         const {
           id,

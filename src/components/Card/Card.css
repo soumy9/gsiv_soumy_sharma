@@ -1,0 +1,33 @@
+.card {
+  /* height: 40rem; */
+}
+
+
+.card__container {
+  border: 1px solid gray;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-self: stretch;
+  align-self: stretch;
+  height: 100%;
+}
+
+.card__image-container {
+
+}
+
+.card__image {
+  height: auto;
+  width: 100%;
+}
+
+.card__description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: initial;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
