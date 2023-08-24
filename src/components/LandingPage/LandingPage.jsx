@@ -1,3 +1,4 @@
+import CardList from "../CardList/CardList";
 import Navigation from "../Navigation/Navigation";
 
 function LandingPage(){
