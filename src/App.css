@@ -43,3 +43,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+body {
+  font-size: 1.6rem;
+}

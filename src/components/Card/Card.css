@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+.card__details {
+  padding: 1rem;
+}
+
 .card__description {
   overflow: hidden;
   text-overflow: ellipsis;
