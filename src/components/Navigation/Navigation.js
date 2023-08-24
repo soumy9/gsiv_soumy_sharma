@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
 import './Navigation.css';
 
@@ -6,7 +7,7 @@ function Navigation({ title }) {
     <>
       <nav className='navigation'>
         {title ? <h1>{title}</h1> : <Search></Search>}
-        <button>Home</button>
+        <Link to='/'>Home</Link>
       </nav>
     </>
   );
