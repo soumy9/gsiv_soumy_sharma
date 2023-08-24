@@ -5,6 +5,7 @@ import { getMovieDetails } from '../../thunks/moviesThunk';
 import { getHHMM } from '../../utils';
 import { getImageSrc, imageSize } from '../Card/Card';
 import './Details.css';
+import Navigation from '../Navigation/Navigation';
 
 function Details() {
   const { id } = useParams();
@@ -23,19 +24,21 @@ function Details() {
   }, [dispatch, id]);
   console.log({ movieDetails });
   return (
-    <div className='details'>
-      <img src={getImageSrc(imageSrc, imageSize.large)} alt={title} />
-      <div>
-        <h3>{title}</h3>
-        <span>({rating})</span>
+    <>
+    <Navigation title={title} />
+      <div className='details'>
+        <img src={getImageSrc(imageSrc, imageSize.large)} alt={title} />
         <div>
-          <span>{year}</span>
-          <span>{getHHMM(length)}</span>
-          {/* <span>{director}</span> */}
+          <div><h3>{title}</h3><span>({rating})</span></div>
+          <div>
+            <span>{year}</span>
+            <span>{getHHMM(length)}</span>
+            {/* <span>{director}</span> */}
+          </div>
+          <p>{description}</p>
         </div>
-        <p>{description}</p>
       </div>
-    </div>
+    </>
   );
 }
 
