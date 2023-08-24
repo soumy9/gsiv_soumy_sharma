@@ -16,7 +16,7 @@ function Card({ imageSrc, title, rating, description, id }) {
           <div className='card__details'>
             <h3>{title}</h3>
             <span>{rating}</span>
-            <p className='card__description'>{description}</p>
+            <p className='card__description'>Description: {description}</p>
           </div>
         </div>
       </Link>

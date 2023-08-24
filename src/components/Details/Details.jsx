@@ -35,7 +35,7 @@ function Details() {
             <span>{getHHMM(length)}</span>
             {/* <span>{director}</span> */}
           </div>
-          <p>{description}</p>
+          <p>Description: {description}</p>
         </div>
       </div>
     </>
