@@ -1,18 +1,27 @@
 .card-list__container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 1.5rem;
   row-gap: 2rem;
 }
+@media screen and (min-width: 768px) {
+  .card-list__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
-
+@media screen and (min-width: 1248px) {
+  .card-list__container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
 .loader {
   display: flex;
   justify-content: center;
   margin: 7rem 0 5rem 0;
 }
 
-.observer{
+.observer {
   display: inline-block;
   height: 1rem;
 }

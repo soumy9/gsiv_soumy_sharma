@@ -29,3 +29,19 @@ export const getMovieDetails = createAsyncThunk(
     return Promise.resolve({ movieDetails });
   }
 );
+// https://api.themoviedb.org/3/search/movie?query=fight%20club&include_adult=false&language=en-US&page=1
+
+export const searchMovie = createAsyncThunk(
+  'movie/search',
+  async ({ query }, thunkAPI) => {
+    const { page } = thunkAPI.getState();
+
+    const moviesList = await (
+      await fetch(
+        `${api}/search/movie?api_key=${apiKey}&query=${query}&include_adult=false&language=en-US&page=${page}`
+      )
+    ).json();
+    console.log({ moviesList });
+    return Promise.resolve({ moviesList });
+  }
+);

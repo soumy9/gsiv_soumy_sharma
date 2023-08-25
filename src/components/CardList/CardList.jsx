@@ -2,18 +2,22 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nextPage } from '../../store/slice';
 import CircularProgress from '@mui/material/CircularProgress';
-import { getMoviesList } from '../../store/thunks/moviesThunk';
+import { getMoviesList, searchMovie } from '../../store/thunks/moviesThunk';
 import Card from '../Card/Card';
 import './CardList.css';
 
 function CardList() {
   const dispatch = useDispatch();
   const moviesList = useSelector((state) => state.moviesList);
-  const isLoading = useSelector((state) => state.isLoading);
-  console.log({ moviesList });
+  const isSearch = useSelector((state) => state.isSearch);
+  console.log('outside',{isSearch});
+  const searchQuery = useSelector((state) => state.searchQuery);
+  const isLoading = useSelector(state=>state.isLoading);
+  console.log({ moviesList,isLoading });
   const pageEnd = useRef();
+  const isResultEnd = useSelector(state=>state.isResultEnd);
   // const timeoutCbRef = useRef(null);
-
+  
   useEffect(() => {
     let tempRef;
     const options = {
@@ -22,8 +26,16 @@ function CardList() {
       threshold: 1,
     };
     function cb() {
+      if(isResultEnd){
+        return;
+      }
       dispatch(nextPage());
-      dispatch(getMoviesList());
+      console.log('inside',{isSearch});
+      if(isSearch) {
+        dispatch(searchMovie({query:searchQuery}));
+      } else {
+        dispatch(getMoviesList());
+      }
       // console.log('here', timeoutCbRef.current);
       // if(timeoutCbRef.current){
       //   return;
@@ -35,18 +47,18 @@ function CardList() {
     }
     const observer = new IntersectionObserver(cb, options);
     observer.observe(pageEnd.current);
-    tempRef=pageEnd.current;
-
-    return ()=>{
+    tempRef = pageEnd.current;
+    return () => {
       observer.unobserve(tempRef);
-    }
-  }, [dispatch]);
+    };
+  }, [dispatch, isSearch, searchQuery, isResultEnd]);
 
   // useEffect(() => {
   //   dispatch(getMoviesList());
   // }, [dispatch]);
   return (
     <>
+      {isSearch ? <h2>Showing results for "{searchQuery}"</h2> : null}
       <div className='card-list__container'>
         {moviesList?.map((movie) => {
           const {
@@ -69,8 +81,9 @@ function CardList() {
         })}
       </div>
       <div ref={pageEnd} className='observer'></div>
-      <div className='loader'>{isLoading ? <CircularProgress disableShrink={true} /> : null}</div>
-
+      <div className='loader'>
+        {isLoading ? <CircularProgress disableShrink={true} /> : null}
+      </div>
     </>
   );
 }
