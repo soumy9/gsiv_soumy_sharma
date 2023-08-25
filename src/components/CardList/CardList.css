@@ -4,3 +4,15 @@
   column-gap: 1.5rem;
   row-gap: 2rem;
 }
+
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin: 7rem 0 5rem 0;
+}
+
+.observer{
+  display: inline-block;
+  height: 1rem;
+}

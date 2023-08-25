@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getMovieDetails } from '../../thunks/moviesThunk';
+import { getMovieDetails } from '../../store/thunks/moviesThunk';
 import { getHHMM } from '../../utils';
 import { getImageSrc, imageSize } from '../Card/Card';
 import './Details.css';
@@ -25,11 +25,14 @@ function Details() {
   console.log({ movieDetails });
   return (
     <>
-    <Navigation title={title} />
+      <Navigation title={title} />
       <div className='details'>
         <img src={getImageSrc(imageSrc, imageSize.large)} alt={title} />
         <div>
-          <div><h3>{title}</h3><span>({rating})</span></div>
+          <div>
+            <h3>{title}</h3>
+            <span>({rating})</span>
+          </div>
           <div>
             <span>{year}</span>
             <span>{getHHMM(length)}</span>
