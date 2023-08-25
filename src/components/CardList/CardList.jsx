@@ -10,10 +10,8 @@ function CardList() {
   const dispatch = useDispatch();
   const moviesList = useSelector((state) => state.moviesList);
   const isSearch = useSelector((state) => state.isSearch);
-  console.log('outside',{isSearch});
   const searchQuery = useSelector((state) => state.searchQuery);
   const isLoading = useSelector(state=>state.isLoading);
-  console.log({ moviesList,isLoading });
   const pageEnd = useRef();
   const isResultEnd = useSelector(state=>state.isResultEnd);
   // const timeoutCbRef = useRef(null);
@@ -30,7 +28,6 @@ function CardList() {
         return;
       }
       dispatch(nextPage());
-      console.log('inside',{isSearch});
       if(isSearch) {
         dispatch(searchMovie({query:searchQuery}));
       } else {

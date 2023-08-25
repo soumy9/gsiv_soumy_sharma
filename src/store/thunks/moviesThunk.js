@@ -41,7 +41,6 @@ export const searchMovie = createAsyncThunk(
         `${api}/search/movie?api_key=${apiKey}&query=${query}&include_adult=false&language=en-US&page=${page}`
       )
     ).json();
-    console.log({ moviesList });
     return Promise.resolve({ moviesList });
   }
 );

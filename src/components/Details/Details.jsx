@@ -22,7 +22,6 @@ function Details() {
   useEffect(() => {
     dispatch(getMovieDetails({ id }));
   }, [dispatch, id]);
-  console.log({ movieDetails });
   return (
     <>
       <Navigation title='Movie Details' />
