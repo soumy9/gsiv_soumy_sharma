@@ -15,7 +15,7 @@ function Details() {
     original_title: title,
     vote_average: rating,
     runtime: length,
-    year,
+    release_date:year,
     overview: description,
     poster_path: imageSrc,
   } = movieDetails;
@@ -25,20 +25,21 @@ function Details() {
   console.log({ movieDetails });
   return (
     <>
-      <Navigation title={title} />
+      <Navigation title='Movie Details' />
       <div className='details'>
         <img src={getImageSrc(imageSrc, imageSize.large)} alt={title} />
         <div>
-          <div>
+          <div className='details__title'>
             <h3>{title}</h3>
-            <span>({rating})</span>
+            <span className='details__rating'>({rating})</span>
           </div>
-          <div>
-            <span>{year}</span>
+          <div className='details__description details__stats'>
+            <span>{year.slice(0,4)}</span>
+            <span>|</span>
             <span>{getHHMM(length)}</span>
             {/* <span>{director}</span> */}
           </div>
-          <p>Description: {description}</p>
+          <p className='details__description'>Description: {description}</p>
         </div>
       </div>
     </>

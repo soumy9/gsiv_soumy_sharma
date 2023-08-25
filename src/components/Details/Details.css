@@ -1,5 +1,35 @@
 .details {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   column-gap: 2rem;
+}
+
+@media screen and (width>=768px) {
+  .details {
+    flex-direction: row;
+  }
+}
+
+.details__stats {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.details__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.details__title h3 {
+  color: #5c5c5c;
+}
+
+.details__rating {
+  color: #a9a9a9;
+}
+
+.details__description {
+  color: #777777;
 }
