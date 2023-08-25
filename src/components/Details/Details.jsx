@@ -34,7 +34,7 @@ function Details() {
             <span className='details__rating'>({rating})</span>
           </div>
           <div className='details__description details__stats'>
-            <span>{year.slice(0,4)}</span>
+            <span>{year?.slice(0,4)}</span>
             <span>|</span>
             <span>{getHHMM(length)}</span>
             {/* <span>{director}</span> */}
