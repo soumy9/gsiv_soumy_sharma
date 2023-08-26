@@ -33,3 +33,15 @@
 .details__description {
   color: #777777;
 }
+
+.details__img {
+  height: auto;
+  width: 100%;
+}
+
+@media screen and (width>=768px) {
+  .details__img {
+    height: 75vh;
+    width: auto;
+  }
+}

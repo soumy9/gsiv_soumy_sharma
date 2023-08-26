@@ -60,7 +60,7 @@ function CardList() {
         {moviesList?.map((movie) => {
           const {
             id,
-            original_title: title,
+            title,
             vote_average: rating,
             overview: description,
             poster_path: imageSrc,

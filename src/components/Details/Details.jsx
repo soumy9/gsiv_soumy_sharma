@@ -12,7 +12,7 @@ function Details() {
   const dispatch = useDispatch();
   const movieDetails = useSelector((state) => state.movieDetails);
   const {
-    original_title: title,
+    title,
     vote_average: rating,
     runtime: length,
     release_date:year,
@@ -26,11 +26,11 @@ function Details() {
     <>
       <Navigation title='Movie Details' />
       <div className='details'>
-        <img src={getImageSrc(imageSrc, imageSize.large)} alt={title} />
+        <img src={getImageSrc(imageSrc, imageSize.large)} alt={title} className='details__img' />
         <div>
           <div className='details__title'>
             <h3>{title}</h3>
-            <span className='details__rating'>({rating})</span>
+            <span className='details__rating'>({rating?.toFixed(1)})</span>
           </div>
           <div className='details__description details__stats'>
             <span>{year?.slice(0,4)}</span>

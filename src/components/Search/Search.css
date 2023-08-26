@@ -1,3 +1,7 @@
+form{
+  width: 50%;
+}
+
 input {
   background-color: #d5e1e1;
   height: 3rem;
@@ -5,7 +9,7 @@ input {
   margin: 0;
   border: none;
   border-radius: 5px;
-  width: 27rem;
+  width: 100%;
   padding-left: 3rem;
 }
 
